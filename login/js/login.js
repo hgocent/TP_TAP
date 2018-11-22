@@ -8,7 +8,7 @@ $(document).ready(function() {
         if ($.trim(username).length > 0 && $.trim(password).length > 0) {
         	$.ajaxSetup({cache: false});
 			
-			alert("button hit
+			alert("button hit);
 			
 			//var posting = $.post('http://localhost:3000/login', {'username': username, 'password': password});
 
