@@ -1,0 +1,5 @@
+[{"user":"hugo","emisor":"juan","msj":"Hola Hugo soy Juan."},
+ {"user":"hugo","emisor":"anto","msj":"Hola Hugo soy Anto."},
+ {"user":"juan","emisor":"hugo","msj":"Hola juan soy hugo."},
+ {"user":"elimer","emisor":"hugo","msj":"Hola eli soy hugo."}
+ ]

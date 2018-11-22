@@ -1,0 +1,23 @@
+[	{
+        "hugo": {
+            "1": {
+                "emisor": "Juan",
+                "msj": "Hola Hugo soy Juan"
+            },
+			"2": {
+                "emisor": "Elimer",
+                "msj": "Hola Hugo soy Eli"
+            }
+        },
+        "juan": {
+            "1": {
+                "emisor": "Hugo",
+                "msj": "Hola Juan soy Hugo"
+            },
+            "2": {
+                "emisor": "Anto",
+                "msj": "Hola Juan soy Anto"
+            }
+        }
+    }
+]
