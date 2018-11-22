@@ -8,16 +8,9 @@ $(document).ready(function() {
         if ($.trim(username).length > 0 && $.trim(password).length > 0) {
         	$.ajaxSetup({cache: false});
 			
-			alert("hit the button");
+			alert("button hit
 			
-			fetch('http://localhost:3000/login/?name=hugo&pass=1234')
-			.then(response => response.json())
-			.then(data => {
-				// Do what you want with your data
-				alert(data);
-			});
-		
-			
+			//var posting = $.post('http://localhost:3000/login', {'username': username, 'password': password});
 
         } else {
             $('#error').html('<span class="error">Error:</span> Ingrese Nombre de usuario y Password.');
