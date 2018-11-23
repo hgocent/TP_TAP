@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TAP - Messenger</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/bootstrap.min.js"></script>
+	
+</head>
+<body>
+  <!-- ngIf: form.display !== 'pdf' --><ul class="rootlist component-list ng-scope ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" ng-if="form.display !== 'pdf'" component="form" form="form" formio="::formio" hide-dnd-box-count="hideCount" root-list="true" options="options" dnd-disable-if="form.display === 'wizard'">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><li ng-repeat="component in component.components" ng-if="!rootList || !form.display || (form.display === 'form') || (form.page === $index)" dnd-draggable="component" dnd-effect-allowed="move" dnd-dragstart="dndDragIframeWorkaround.isDragging = true" dnd-dragend="dndDragIframeWorkaround.isDragging = false" dnd-moved="removeComponent(component, false, true)" class="ng-scope" draggable="true">
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-columns form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope"><div class="component-btn-group ng-scope">
+  
+  <!-- ngIf: ::formComponent.views && !component.lockConfiguration --><!-- end ngIf: ::formComponent.views && !component.lockConfiguration -->
+  <!-- ngIf: ::!hideMoveButton --><!-- end ngIf: ::!hideMoveButton -->
+  <!-- ngIf: ::formComponent.views && !component.lockConfiguration --><!-- end ngIf: ::formComponent.views && !component.lockConfiguration -->
+</div>
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-columns " id="form-group-columns" style="position:inherit" ng-style="component.style">
+    <div class="row ng-scope"><!-- ngRepeat: column in component.columns --><div class="col-xs-12 col-xs-offset-0 col-xs-push-0 col-xs-pull-0" component-form-group"="" ng-repeat="column in component.columns"><ul class="formio-column component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'columns[' + $index + '].components'" component="column" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-fieldset form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope"><div class="component-btn-group ng-scope">
+  
+  <!-- ngIf: ::formComponent.views && !component.lockConfiguration --><!-- end ngIf: ::formComponent.views && !component.lockConfiguration -->
+  <!-- ngIf: ::!hideMoveButton --><!-- end ngIf: ::!hideMoveButton -->
+  <!-- ngIf: ::formComponent.views && !component.lockConfiguration --><!-- end ngIf: ::formComponent.views && !component.lockConfiguration -->
+</div>
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-fieldset " id="form-group-columnsFieldset" style="position:inherit" ng-style="component.style">
+    <fieldset class="ng-scope"><!-- ngIf: component.legend --><legend ng-if="component.legend" class="ng-binding ng-scope">Usuario <!-- ngIf: component.tooltip --></legend><!-- end ngIf: component.legend --><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" component="component" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-button form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-button " id="form-group-columnsLogOut" style="position:inherit;padding-left: 0px;border-left-style: solid;border-left-width: 0px;margin-left: -40px;" ng-style="component.style">
+    <button ng-attr-type="{{ getButtonType() }}" id="columnsLogOut" name="columnsLogOut" ng-class="{'btn-block': component.block, 'btn-disable': disableBtn}" auto-focus="true" class="btn btn-primary btn-xs" ng-disabled="readOnly || formioForm.submitting || (component.disableOnInvalid &amp;&amp; formioForm.$invalid)" tabindex="0" ng-click="$emit('buttonClick', component, componentId)" disabled="disabled">
+  <!-- ngIf: component.leftIcon -->
+  <!-- ngIf: component.leftIcon && component.label -->Salir de la sesión<!-- ngIf: component.rightIcon && component.label -->
+  <!-- ngIf: component.rightIcon -->
+  <!-- ngIf: component.tooltip -->
+  <!-- ngIf: component.action == 'submit' && formioForm.submitting -->
+</button>
+<!-- ngIf: hasError() -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></fieldset>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div><!-- end ngRepeat: column in component.columns --></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  </li><!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-table form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-table " id="form-group-table" style="position:inherit" ng-style="component.style">
+    <div class="table-responsive ng-scope"><table ng-class="{'table-striped': component.striped, 'table-bordered': component.bordered, 'table-hover': component.hover, 'table-condensed': component.condensed}" class="table table-condensed"><!-- ngIf: component.header.length --><tbody><!-- ngRepeat: row in component.rows --><tr ng-repeat="row in component.rows" class="ng-scope"><!-- ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'rows[' + $parent.$index + ']' + '[' + $index + '].components'" component="col" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-panel form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-panel " id="form-group-tablePanel" style="position:inherit" ng-style="component.style">
+    <div class="panel panel-default"><!-- ngIf: component.title --><div ng-if="component.title" class="panel-heading ng-scope"><h3 class="panel-title ng-binding">Mensajes Recibidos <!-- ngIf: component.tooltip --></h3></div><!-- end ngIf: component.title --><div class="panel-body"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" component="component" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-radio form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder" uib-tooltip="Mensajes no leídos">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-radio " id="form-group-tablePanelMensajesnoledos" style="position:inherit" ng-style="component.style">
+    <!-- ngIf: !component.multiple --><div ng-if="!component.multiple" class="ng-scope"><!-- ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><div class="input-group" ng-style="getInputGroupStyles(component)"><!-- ngIf: !!component.prefix --><ng-form name="tablePanelMensajesnoledos" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" custom-validator="component.validate.custom" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-required">
+  <!-- ngIf: component.fieldSet -->
+  <!-- ngRepeat: v in component.values track by $index --><!-- ngIf: !component.fieldSet --><div ng-class="component.inline ? 'radio-inline' : 'radio'" ng-repeat="v in component.values track by $index" ng-if="!component.fieldSet" class="ng-scope radio">
+    <label class="control-label" for="tablePanelMensajesnoledos-msj1" id="tablePanelMensajesnoledos-msj1Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="radio" id="tablePanelMensajesnoledos-msj1" value="msj1" tabindex="0" aria-labelledby="tablePanelMensajesnoledos-msj1Label" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" auto-focus="true" ng-required="isRequired(component)" custom-validator="component.validate.custom" ng-disabled="readOnly" ng-style="getOptionInputStyles(component)" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-required" name="14694">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">msj1</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngIf: !component.fieldSet --><!-- end ngRepeat: v in component.values track by $index --><!-- ngIf: !component.fieldSet --><div ng-class="component.inline ? 'radio-inline' : 'radio'" ng-repeat="v in component.values track by $index" ng-if="!component.fieldSet" class="ng-scope radio">
+    <label class="control-label" for="tablePanelMensajesnoledos-msj2" id="tablePanelMensajesnoledos-msj2Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="radio" id="tablePanelMensajesnoledos-msj2" value="msj2" tabindex="0" aria-labelledby="tablePanelMensajesnoledos-msj2Label" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" auto-focus="false" ng-required="isRequired(component)" custom-validator="component.validate.custom" ng-disabled="readOnly" ng-style="getOptionInputStyles(component)" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-required" name="14697">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">msj2</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngIf: !component.fieldSet --><!-- end ngRepeat: v in component.values track by $index --><!-- ngIf: !component.fieldSet --><div ng-class="component.inline ? 'radio-inline' : 'radio'" ng-repeat="v in component.values track by $index" ng-if="!component.fieldSet" class="ng-scope radio">
+    <label class="control-label" for="tablePanelMensajesnoledos-msj3" id="tablePanelMensajesnoledos-msj3Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="radio" id="tablePanelMensajesnoledos-msj3" value="msj3" tabindex="0" aria-labelledby="tablePanelMensajesnoledos-msj3Label" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" auto-focus="false" ng-required="isRequired(component)" custom-validator="component.validate.custom" ng-disabled="readOnly" ng-style="getOptionInputStyles(component)" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-required" name="14700">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">msj3</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngIf: !component.fieldSet --><!-- end ngRepeat: v in component.values track by $index --><!-- ngIf: !component.fieldSet --><div ng-class="component.inline ? 'radio-inline' : 'radio'" ng-repeat="v in component.values track by $index" ng-if="!component.fieldSet" class="ng-scope radio">
+    <label class="control-label" for="tablePanelMensajesnoledos-msj4" id="tablePanelMensajesnoledos-msj4Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="radio" id="tablePanelMensajesnoledos-msj4" value="msj4" tabindex="0" aria-labelledby="tablePanelMensajesnoledos-msj4Label" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" auto-focus="false" ng-required="isRequired(component)" custom-validator="component.validate.custom" ng-disabled="readOnly" ng-style="getOptionInputStyles(component)" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-required" name="14703">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">msj4</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngIf: !component.fieldSet --><!-- end ngRepeat: v in component.values track by $index -->
+</ng-form>
+<!-- ngIf: (component.hideLabel === true || component.label === '' || !component.label) && isRequired(component) --><!-- ngIf: !!component.suffix --></div><!-- ngIf: labelVisible() && (component.labelPosition === 'bottom') --><div class="formio-errors"><!-- ngIf: ::!options.building --></div></div><!-- end ngIf: !component.multiple --><!-- ngIf: component.multiple --><!-- ngIf: !!component.description -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></td><!-- end ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"></td><!-- end ngRepeat: col in row --></tr><!-- end ngRepeat: row in component.rows --><tr ng-repeat="row in component.rows" class="ng-scope"><!-- ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'rows[' + $parent.$index + ']' + '[' + $index + '].components'" component="col" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-panel form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-panel " id="form-group-tablePanel2" style="position:inherit" ng-style="component.style">
+    <div class="panel panel-default"><!-- ngIf: component.title --><div ng-if="component.title" class="panel-heading ng-scope"><h3 class="panel-title ng-binding">Mensaje Nuevo <!-- ngIf: component.tooltip --></h3></div><!-- end ngIf: component.title --><div class="panel-body"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" component="component" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-textarea form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder" uib-tooltip="Escribir Mensaje">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-textarea " id="form-group-tablePanel2EscribirMensaje" style="position:inherit" ng-style="component.style">
+    <!-- ngIf: !component.multiple --><div ng-if="!component.multiple" class="ng-scope"><!-- ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><div class="input-group" ng-style="getInputGroupStyles(component)"><!-- ngIf: !!component.prefix --><textarea class="form-control ng-pristine ng-valid ng-empty ng-valid-required ng-touched" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" ng-disabled="readOnly" ng-required="isRequired(component)" spellcheck="true" safe-multiple-to-single="" auto-focus="true" id="tablePanel2EscribirMensaje" name="tablePanel2EscribirMensaje" aria-labelledby="tablePanel2EscribirMensajeLabel" aria-describedby="tablePanel2EscribirMensajeDesc" tabindex="0" ng-attr-placeholder="{{ component.placeholder | formioTranslate:null:options.building }}" custom-validator="component.validate.custom" rows="7" placeholder="" style="width: 558px; height: 179px;"></textarea>
+<!-- ngIf: (component.hideLabel === true || component.label === '' || !component.label) && isRequired(component) --><!-- ngIf: !!component.suffix --></div><!-- ngIf: labelVisible() && (component.labelPosition === 'bottom') --><div class="formio-errors"><!-- ngIf: ::!options.building --></div></div><!-- end ngIf: !component.multiple --><!-- ngIf: component.multiple --><!-- ngIf: !!component.description -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></td><!-- end ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'rows[' + $parent.$index + ']' + '[' + $index + '].components'" component="col" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-panel form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-panel " id="form-group-tablePanel3" style="position:inherit" ng-style="component.style">
+    <div class="panel panel-default"><!-- ngIf: component.title --><div ng-if="component.title" class="panel-heading ng-scope"><h3 class="panel-title ng-binding">Usuarios <!-- ngIf: component.tooltip --></h3></div><!-- end ngIf: component.title --><div class="panel-body"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" component="component" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-selectboxes form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-selectboxes " id="form-group-tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos" style="position:inherit" ng-style="component.style">
+    <!-- ngIf: component.fieldSet -->
+<!-- ngIf: !component.fieldSet --><div class="select-boxes ng-scope" ng-if="!component.fieldSet">
+  <!-- ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><label ng-if="labelVisible() &amp;&amp; (component.labelPosition !== 'bottom')" for="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos" class="control-label ng-binding ng-scope" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodosLabel" ng-class="{'field-required': isRequired(component)}" ng-style="getLabelStyles(component)">
+    Seleccione para enviar mensaje (Dejar en blanco para enviar a todos)
+    <!-- ngIf: component.tooltip -->
+  </label><!-- end ngIf: labelVisible() && (component.labelPosition !== 'bottom') -->
+  <div class="select-boxes ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-required" name="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos" ng-model="data[component.key]" ng-model-options="{allowInvalid: true}" component="component" component-id="componentId" read-only="readOnly" ng-required="isRequired(component)" custom-validator="component.validate.custom" aria-labelledby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodosLabel" aria-describedby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodosDesc" grid-row="gridRow" grid-col="gridCol" options="options" ng-style="getInputGroupStyles(component)">
+  <!-- ngRepeat: v in component.values track by $index --><div ng-class="component.inline ? 'checkbox-inline' : 'checkbox'" ng-repeat="v in component.values track by $index" class="ng-scope checkbox">
+    <label class="control-label" for="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user1" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user1Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="checkbox" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user1" name="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user1" value="user1" tabindex="0" ng-disabled="readOnly" auto-focus="true" ng-click="toggleCheckbox(v.value)" ng-checked="model[v.value]" aria-labelledby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user1Label" grid-row="gridRow" grid-col="gridCol" ng-style="getOptionInputStyles(component)">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">user1</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngRepeat: v in component.values track by $index --><div ng-class="component.inline ? 'checkbox-inline' : 'checkbox'" ng-repeat="v in component.values track by $index" class="ng-scope checkbox">
+    <label class="control-label" for="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user2" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user2Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="checkbox" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user2" name="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user2" value="user2" tabindex="0" ng-disabled="readOnly" auto-focus="false" ng-click="toggleCheckbox(v.value)" ng-checked="model[v.value]" aria-labelledby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user2Label" grid-row="gridRow" grid-col="gridCol" ng-style="getOptionInputStyles(component)">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">user2</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngRepeat: v in component.values track by $index --><div ng-class="component.inline ? 'checkbox-inline' : 'checkbox'" ng-repeat="v in component.values track by $index" class="ng-scope checkbox">
+    <label class="control-label" for="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user3" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user3Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="checkbox" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user3" name="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user3" value="user3" tabindex="0" ng-disabled="readOnly" auto-focus="false" ng-click="toggleCheckbox(v.value)" ng-checked="model[v.value]" aria-labelledby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user3Label" grid-row="gridRow" grid-col="gridCol" ng-style="getOptionInputStyles(component)">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">user3</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngRepeat: v in component.values track by $index --><div ng-class="component.inline ? 'checkbox-inline' : 'checkbox'" ng-repeat="v in component.values track by $index" class="ng-scope checkbox">
+    <label class="control-label" for="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user4" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user4Label" ng-style="getOptionLabelStyles(component)">
+      <!-- ngIf: topOrLeftOptionLabel(component) -->
+      <input type="checkbox" id="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user4" name="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user4" value="user4" tabindex="0" ng-disabled="readOnly" auto-focus="false" ng-click="toggleCheckbox(v.value)" ng-checked="model[v.value]" aria-labelledby="tablePanel3SeleccioneUsuariosparaenviarmensajeDejarenblancoparaenviaratodos-user4Label" grid-row="gridRow" grid-col="gridCol" ng-style="getOptionInputStyles(component)">
+      <!-- ngIf: !topOrLeftOptionLabel(component) --><span ng-if="!topOrLeftOptionLabel(component)" class="ng-binding ng-scope">user4</span><!-- end ngIf: !topOrLeftOptionLabel(component) -->
+    </label>
+  </div><!-- end ngRepeat: v in component.values track by $index -->
+</div>
+  <!-- ngIf: labelVisible() && (component.labelPosition === 'bottom') -->
+  <!-- ngIf: !!component.description -->
+  <!-- ngIf: ::!options.building -->
+</div><!-- end ngIf: !component.fieldSet -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></td><!-- end ngRepeat: col in row --></tr><!-- end ngRepeat: row in component.rows --><tr ng-repeat="row in component.rows" class="ng-scope"><!-- ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'rows[' + $parent.$index + ']' + '[' + $index + '].components'" component="col" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-columns form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-columns " id="form-group-tableColumns" style="position:inherit" ng-style="component.style">
+    <div class="row ng-scope"><!-- ngRepeat: column in component.columns --><div class="col-xs-6 col-xs-offset-0 col-xs-push-0 col-xs-pull-0" component-form-group"="" ng-repeat="column in component.columns"><ul class="formio-column component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'columns[' + $index + '].components'" component="column" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-button form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-button " id="form-group-tableColumnsCancelar" style="position:inherit" ng-style="component.style">
+    <button ng-attr-type="{{ getButtonType() }}" id="tableColumnsCancelar" name="tableColumnsCancelar" ng-class="{'btn-block': component.block, 'btn-disable': disableBtn}" auto-focus="true" class="btn btn-primary btn-md btn-block" ng-disabled="readOnly || formioForm.submitting || (component.disableOnInvalid &amp;&amp; formioForm.$invalid)" tabindex="0" ng-click="$emit('buttonClick', component, componentId)" disabled="disabled">
+  <!-- ngIf: component.leftIcon -->
+  <!-- ngIf: component.leftIcon && component.label -->Cancelar<!-- ngIf: component.rightIcon && component.label -->
+  <!-- ngIf: component.rightIcon -->
+  <!-- ngIf: component.tooltip -->
+  <!-- ngIf: component.action == 'submit' && formioForm.submitting -->
+</button>
+<!-- ngIf: hasError() -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div><!-- end ngRepeat: column in component.columns --><div class="col-xs-6 col-xs-offset-0 col-xs-push-0 col-xs-pull-0" component-form-group"="" ng-repeat="column in component.columns"><ul class="formio-column component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" parent="component" path="'columns[' + $index + '].components'" component="column" form="form" options="options" formio="::formio">
+  <!-- ngIf: component.components.length < hideCount -->
+  <!-- DO NOT PUT "track by $index" HERE SINCE DYNAMICALLY ADDING/REMOVING COMPONENTS WILL BREAK -->
+  <!-- ngRepeat: component in component.components --><!-- ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) -->
+    <!-- ngIf: !component.hideBuilder --><div class="component-form-group component-type-button form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+</div><!-- end ngIf: ::!hideButtons -->
+  <div class="form-group has-feedback form-field-type-button " id="form-group-tableColumnsEnviar" style="position:inherit" ng-style="component.style">
+    <button ng-attr-type="{{ getButtonType() }}" id="tableColumnsEnviar" name="tableColumnsEnviar" ng-class="{'btn-block': component.block, 'btn-disable': disableBtn}" auto-focus="true" class="btn btn-primary btn-md btn-block" ng-disabled="readOnly || formioForm.submitting || (component.disableOnInvalid &amp;&amp; formioForm.$invalid)" tabindex="0" ng-click="$emit('buttonClick', component, componentId)" disabled="disabled">
+  <!-- ngIf: component.leftIcon -->
+  <!-- ngIf: component.leftIcon && component.label -->Enviar<!-- ngIf: component.rightIcon && component.label -->
+  <!-- ngIf: component.rightIcon -->
+  <!-- ngIf: component.tooltip -->
+  <!-- ngIf: component.action == 'submit' && formioForm.submitting -->
+</button>
+<!-- ngIf: hasError() -->
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></div><!-- end ngRepeat: column in component.columns --></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul></td><!-- end ngRepeat: col in row --><td ng-repeat="col in row" class="ng-scope"></td><!-- end ngRepeat: col in row --></tr><!-- end ngRepeat: row in component.rows --></tbody></table></div>
+  </div>
+</div><!-- end ngIf: !component.hideBuilder -->
+    <!-- ngIf: dndDragIframeWorkaround.isDragging && !formComponent.noDndOverlay -->
+  <!-- end ngIf: !rootList || !form.display || (form.display === 'form') || (form.page === $index) --><!-- end ngRepeat: component in component.components -->
+</ul>
+	<footer>
+		<!--footer.-->
+	</footer>
+	<script src="js/messages.js"></script>
+
+</body>
+
+</html>

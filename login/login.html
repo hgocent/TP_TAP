@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>TAP - Messenger</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/bootstrap.min.js"></script>
+	
+</head>
+
+<body style="border-top-width: 0px;border-top-style: solid;padding-top: 40px;">
+	<div class="col-xs-7 col-xs-offset-0 col-xs-push-3 col-xs-pull-0" component-form-group"="" ng-repeat="column in component.columns">
+	
+	<div class="form-group has-feedback form-field-type-panel " id="form-group-panel" style="position:inherit" ng-style="component.style">
+	<div class="panel panel-default"><!-- ngIf: component.title --><div ng-if="component.title" class="panel-heading ng-scope"><h3 class="panel-title ng-binding">Login <!-- ngIf: component.tooltip --></h3></div><!-- end ngIf: component.title --><div class="panel-body"><ul class="component-list ng-isolate-scope" dnd-list="component.components" dnd-drop="addComponent(item, index, parent, path)" component="component" form="form" options="options" formio="::formio">
+	  
+	  <div class="component-form-group component-type-email form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+	  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+	</div><!-- end ngIf: ::!hideButtons -->
+	  <div class="form-group has-feedback form-field-type-email " id="form-group-email" style="position:inherit" ng-style="component.style">
+		<!-- ngIf: !component.multiple --><div ng-if="!component.multiple" class="ng-scope"><!-- ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><label ng-if="labelVisible() &amp;&amp; (component.labelPosition !== 'bottom')" for="username" id="emailLabel" class="control-label ng-binding ng-scope" ng-class="{'field-required': isRequired(component)}" ng-style="getLabelStyles(component)">Usuario <!-- ngIf: component.tooltip --></label><!-- end ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><div class="input-group" ng-style="getInputGroupStyles(component)"><!-- ngIf: !!component.prefix --><input type="email" class="form-control ng-untouched ng-valid ng-valid-email ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-valid-mask ng-valid-required ng-not-empty ng-dirty ng-valid-parse" id="username" name="username" tabindex="0" ng-disabled="readOnly" ng-model="data[component.key]" ng-model-options="{ allowInvalid: true, debounce: 500 }" safe-multiple-to-single="" auto-focus="true" aria-labelledby="emailLabel" aria-describedby="emailDesc" ng-required="isRequired(component)" spellcheck="" custom-validator="component.validate.custom" ng-attr-placeholder="{{ component.placeholder | formioTranslate:null:options.building }}" formio-mask="" placeholder="Ingrese usuario" style="padding-right: 70px;">
+	<!-- ngIf: (component.hideLabel === true || component.label === '' || !component.label) && isRequired(component) --><!-- ngIf: !!component.suffix --></div><!-- ngIf: labelVisible() && (component.labelPosition === 'bottom') --><div class="formio-errors"><!-- ngIf: ::!options.building --></div></div><!-- end ngIf: !component.multiple --><!-- ngIf: component.multiple --><!-- ngIf: !!component.description -->
+	  </div>
+	</div>
+	  <!-- ngIf: ::!hideButtons --><!-- ngInclude: 'formio/formbuilder/editbuttons.html' --><div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+	</div><!-- end ngIf: ::!hideButtons -->
+	  <div class="form-group has-feedback form-field-type-password " id="form-group-password" style="position:inherit" ng-style="component.style">
+		<!-- ngIf: !component.multiple --><div ng-if="!component.multiple" class="ng-scope"><!-- ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><label ng-if="labelVisible() &amp;&amp; (component.labelPosition !== 'bottom')" for="password" id="passwordLabel" class="control-label ng-binding ng-scope" ng-class="{'field-required': isRequired(component)}" ng-style="getLabelStyles(component)">Password <!-- ngIf: component.tooltip --></label><!-- end ngIf: labelVisible() && (component.labelPosition !== 'bottom') --><div class="input-group" ng-style="getInputGroupStyles(component)"><!-- ngIf: !!component.prefix --><input type="password" class="form-control ng-untouched ng-valid ng-valid-pattern ng-valid-minlength ng-valid-maxlength ng-valid-mask ng-valid-required ng-not-empty ng-dirty ng-valid-parse" id="password" name="password" tabindex="0" ng-disabled="readOnly" ng-model="data[component.key]" ng-model-options="{ allowInvalid: true, debounce: 500 }" safe-multiple-to-single="" auto-focus="true" aria-labelledby="passwordLabel" aria-describedby="passwordDesc" ng-required="isRequired(component)" spellcheck="" custom-validator="component.validate.custom" ng-attr-placeholder="{{ component.placeholder | formioTranslate:null:options.building }}" formio-mask="" placeholder="Ingrese password" style="padding-right: 70px;">
+	<!-- ngIf: (component.hideLabel === true || component.label === '' || !component.label) && isRequired(component) --><!-- ngIf: !!component.suffix --></div><!-- ngIf: labelVisible() && (component.labelPosition === 'bottom') --><div class="formio-errors"><!-- ngIf: ::!options.building --></div></div><!-- end ngIf: !component.multiple --><!-- ngIf: component.multiple --><!-- ngIf: !!component.description -->
+	  </div>
+	</ul></div>
+	<div class="component-form-group component-type-button form-builder-component" ng-attr-uib-tooltip="{{ (component.input &amp;&amp; component.label &amp;&amp; component.hideLabel) ? component.label : undefined }}" tooltip-placement="top-left" ng-if="!component.hideBuilder">
+	<div ng-if="::!hideButtons" ng-include="'formio/formbuilder/editbuttons.html'" class="ng-scope">
+	</div>
+	  <div class="form-group has-feedback form-field-type-button " id="form-group-submit" style="position:inherit;padding-left: 55px;" ng-style="component.style">
+	<input id="login" class="btn btn-primary" type="submit" value="Login">
+	</div>
+	
+	</div>
+	
+	</div></div>
+	</div>
+	
+	
+		
+<!--<footer style="margin-top: 700px;" >
+		No Tiene Cuenta? <a href="register.html">Registrese aqui</a>.
+		
+</footer> -->
+
+<footer style="margin-top: 660px;">
+		No Tiene Cuenta? <a href="register.html">Registrese aqui</a>.
+</footer>
+	
+<script src="js/login.js"></script>
+	
+
+</body>
+
+</html>
